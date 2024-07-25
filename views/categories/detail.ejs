@@ -1,0 +1,10 @@
+<% include ../layout %>
+<h2>Category: <%= category.name %></h2>
+<p><%= category.description %></p>
+<h3>Items</h3>
+<ul>
+  <% items.forEach(item => { %>
+  <li><%= item.name %></li>
+  <% }) %>
+</ul>
+<a href="/categories/<%= category.id %>/edit">Edit Category</a>

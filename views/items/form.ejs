@@ -1,0 +1,33 @@
+<% include ../layout %>
+<form action="/items<%= item ? '/' + item.id : '' %>" method="POST">
+  <% if (item) { %>
+  <input type="hidden" name="_method" value="PUT" />
+  <% } %>
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input
+      type="text"
+      class="form-control"
+      id="name"
+      name="name"
+      value="<%= item ? item.name : '' %>"
+    />
+  </div>
+  <div class="form-group">
+    <label for="description">Description</label>
+    <textarea class="form-control" id="description" name="description">
+<%= item ? item.description : '' %></textarea
+    >
+  </div>
+  <div class="form-group">
+    <label for="price">Price</label>
+    <input
+      type="number"
+      class="form-control"
+      id="price"
+      name="price"
+      value="<%= item ? item.price : '' %>"
+    />
+  </div>
+  <a href="/items/<%= item.id %>/edit">Edit Item</a>
+</form>

@@ -1,0 +1,13 @@
+<% include ../layout %>
+<h2>Categories</h2>
+<a href="/categories/new">Add New Category</a>
+<ul>
+  <% categories.forEach(category => { %>
+  <li>
+    <a href="/categories/<%= category.id %>"><%= category.name %></a>
+    <form action="/categories/<%= category.id %>?_method=DELETE" method="POST">
+      <button type="submit">Delete</button>
+    </form>
+  </li>
+  <% }) %>
+</ul>

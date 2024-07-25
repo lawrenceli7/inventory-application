@@ -1,0 +1,13 @@
+<% include ../layout %>
+<h2>Items</h2>
+<a href="/items/new">Add New Item</a>
+<ul>
+  <% items.forEach(item => { %>
+  <li>
+    <a href="/items/<%= item.id %>"><%= item.name %></a>
+    <form action="/items/<%= item.id %>?_method=DELETE" method="POST">
+      <button type="submit">Delete</button>
+    </form>
+  </li>
+  <% }) %>
+</ul>
