@@ -1,4 +1,3 @@
-<% include ../layout %>
 <form action="/items<%= item ? '/' + item.id : '' %>" method="POST">
   <% if (item) { %>
   <input type="hidden" name="_method" value="PUT" />

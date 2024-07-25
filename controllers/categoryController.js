@@ -2,8 +2,13 @@ const Category = require("../models/Category");
 const Item = require("../models/Item");
 
 exports.list = async (req, res) => {
-  const categories = await Category.findAll();
-  res.render("categories/list", { categories });
+  try {
+    const categories = await Category.findAll();
+    res.render("categories/list", { categories });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Server Error");
+  }
 };
 
 exports.detail = async (req, res) => {
@@ -13,8 +18,14 @@ exports.detail = async (req, res) => {
 };
 
 exports.create = async (req, res) => {
-  await Category.create(req.body);
-  res.redirect("/categories");
+  try {
+    const { name, description } = req.body;
+    await Category.create({ name, description });
+    res.redirect("/categories");
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Server Error");
+  }
 };
 
 exports.update = async (req, res) => {
